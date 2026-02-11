@@ -1,0 +1,115 @@
+:root {
+  --accent-pink: rgb(255, 155, 215);
+  --accent-blue: rgb(142, 202, 254);
+  --bg-top: #2a235f;
+  --bg-mid: #0b1234;
+  --bg-bottom: #04070f;
+  --text-main: #f4f7ff;
+  --text-muted: rgba(205, 218, 245, 0.75);
+  --surface-dark: rgba(10, 12, 32, 0.9);
+  --surface-border: rgba(174, 206, 255, 0.24);
+
+  font-family: system-ui, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  color: var(--text-main);
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255, 155, 215, 0.28), transparent 34%),
+    radial-gradient(circle at 82% 8%, rgba(142, 202, 254, 0.22), transparent 34%),
+    radial-gradient(circle at top, var(--bg-top), var(--bg-mid) 56%, var(--bg-bottom));
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+a {
+  font-weight: 500;
+  color: var(--accent-pink);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-blue);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+button {
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 0.6rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  background: linear-gradient(135deg, var(--accent-pink), var(--accent-blue));
+  color: #091124;
+  cursor: pointer;
+  transition:
+    transform 0.12s ease-out,
+    box-shadow 0.12s ease-out,
+    border-color 0.12s ease-out,
+    background 0.12s ease-out;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+  box-shadow: none;
+}
+
+input,
+textarea,
+select {
+  border-radius: 999px;
+  border: 1px solid var(--surface-border);
+  padding: 0.55rem 0.85rem;
+  font: inherit;
+  background: var(--surface-dark);
+  color: inherit;
+  outline: none;
+  transition:
+    border-color 0.12s ease-out,
+    box-shadow 0.12s ease-out,
+    background 0.12s ease-out;
+}
+
+textarea {
+  border-radius: 18px;
+  resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--accent-blue);
+  box-shadow: 0 0 0 1px rgba(255, 155, 215, 0.65);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--text-muted);
+}

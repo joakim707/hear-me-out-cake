@@ -1,0 +1,681 @@
+/* =======================
+   GLOBAL LAYOUT
+======================= */
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.page {
+  max-width: 960px;
+  width: 100%;
+}
+
+/* =======================
+   CAKE PAGE
+======================= */
+
+.cake-page {
+  max-width: 1320px;
+  margin: 24px auto 40px;
+  padding: 20px 28px 36px;
+}
+
+.cake-topbar {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.cake-layout-main {
+  display: grid;
+  grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
+  gap: 34px;
+  align-items: flex-start;
+  background:
+    linear-gradient(145deg, rgba(171, 200, 255, 0.12), rgba(255, 255, 255, 0.02)),
+    radial-gradient(circle at 18% 16%, rgba(255, 155, 215, 0.18), transparent 52%),
+    radial-gradient(circle at 78% 8%, rgba(142, 202, 254, 0.16), transparent 46%);
+  border: 1px solid rgba(171, 205, 255, 0.28);
+  border-radius: 28px;
+  padding: 22px;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.52),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* =======================
+   CAKE BOARD
+======================= */
+
+.cake-board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 420px;
+}
+
+.cake-drop {
+  position: relative;
+  width: min(82vw, 360px);
+  height: min(82vw, 360px);
+  border-radius: 50%;
+  overflow: visible;
+  background:
+    radial-gradient(circle at 30% 20%, #ffe6c8 0%, #f3b67d 47%, #8c4d2f 85%),
+    radial-gradient(circle at 65% 74%, rgba(255, 255, 255, 0.22), transparent 42%);
+
+  box-shadow:
+    0 30px 75px rgba(0, 0, 0, 0.72),
+    0 0 0 9px rgba(142, 202, 254, 0.35),
+    inset 0 16px 34px rgba(255, 255, 255, 0.16);
+
+  animation: cake-breathe 4s ease-in-out infinite;
+  transition: transform 0.22s ease-out, box-shadow 0.22s ease-out;
+}
+
+.cake-drop:hover {
+  transform: scale(1.02) translateY(-2px);
+  box-shadow:
+    0 38px 82px rgba(0, 0, 0, 0.78),
+    0 0 0 10px rgba(255, 155, 215, 0.4),
+    inset 0 18px 36px rgba(255, 255, 255, 0.2);
+}
+
+/* =======================
+   PURE CSS CAKE BODY
+======================= */
+
+.cake {
+  position: absolute;
+  width: 250px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  margin-top: -70px;
+  margin-left: -125px;
+}
+
+.plate {
+  width: 270px;
+  height: 110px;
+  position: absolute;
+  bottom: -10px;
+  left: -10px;
+  background-color: #ccc;
+  border-radius: 50%;
+  box-shadow:
+    0 2px 0 #b3b3b3,
+    0 4px 0 #b3b3b3,
+    0 5px 40px rgba(0, 0, 0, 0.5);
+}
+
+.layer {
+  position: absolute;
+  display: block;
+  width: 250px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #553c13;
+  box-shadow:
+    0 2px 0 #62471c,
+    0 4px 0 #4e3812,
+    0 6px 0 #4d3712,
+    0 8px 0 #4c3612,
+    0 10px 0 #4b3511,
+    0 12px 0 #4a3411,
+    0 14px 0 #493311,
+    0 16px 0 #483211,
+    0 18px 0 #473110,
+    0 20px 0 #463010,
+    0 22px 0 #452f10,
+    0 24px 0 #442f10,
+    0 26px 0 #432e10,
+    0 28px 0 #422d0f,
+    0 30px 0 #412c0f;
+}
+
+.layer-bottom {
+  top: 66px;
+}
+
+.layer-middle {
+  top: 33px;
+}
+
+.layer-top {
+  top: 0;
+}
+
+.icing {
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 240px;
+  height: 90px;
+  border-radius: 50%;
+  background-color: #f0e4d0;
+}
+
+.icing::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  bottom: 6px;
+  left: 5px;
+  background-color: #f5ebdb;
+  box-shadow:
+    0 0 4px #faf2e6,
+    0 0 4px #faf2e6,
+    0 0 4px #faf2e6;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.drip {
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 60px;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  background-color: #f0e4d0;
+}
+
+.drip1 {
+  top: 53px;
+  left: 5px;
+  transform: skewY(15deg);
+  height: 48px;
+  width: 40px;
+}
+
+.drip2 {
+  top: 69px;
+  left: 181px;
+  transform: skewY(-15deg);
+}
+
+.drip3 {
+  top: 54px;
+  left: 90px;
+  width: 80px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+}
+
+.candle {
+  position: absolute;
+  background-color: #7b020b;
+  width: 16px;
+  height: 50px;
+  border-radius: 8px / 4px;
+  top: -20px;
+  left: 50%;
+  margin-left: -8px;
+  z-index: 10;
+}
+
+.candle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 16px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #ad2932;
+}
+
+.flame {
+  position: absolute;
+  background-color: orange;
+  width: 15px;
+  height: 35px;
+  border-radius: 10px 10px 10px 10px / 25px 25px 10px 10px;
+  top: -34px;
+  left: 50%;
+  margin-left: -7.5px;
+  z-index: 10;
+  box-shadow:
+    0 0 10px rgba(255, 165, 0, 0.5),
+    0 0 20px rgba(255, 165, 0, 0.5),
+    0 0 60px rgba(255, 165, 0, 0.5),
+    0 0 80px rgba(255, 165, 0, 0.5);
+  transform-origin: 50% 90%;
+  animation: flicker 1s ease-in-out alternate infinite;
+}
+
+@keyframes flicker {
+  0% {
+    transform: skewX(5deg);
+    box-shadow:
+      0 0 10px rgba(255, 165, 0, 0.2),
+      0 0 20px rgba(255, 165, 0, 0.2),
+      0 0 60px rgba(255, 165, 0, 0.2),
+      0 0 80px rgba(255, 165, 0, 0.2);
+  }
+  25% {
+    transform: skewX(-5deg);
+    box-shadow:
+      0 0 10px rgba(255, 165, 0, 0.5),
+      0 0 20px rgba(255, 165, 0, 0.5),
+      0 0 60px rgba(255, 165, 0, 0.5),
+      0 0 80px rgba(255, 165, 0, 0.5);
+  }
+  50% {
+    transform: skewX(10deg);
+    box-shadow:
+      0 0 10px rgba(255, 165, 0, 0.3),
+      0 0 20px rgba(255, 165, 0, 0.3),
+      0 0 60px rgba(255, 165, 0, 0.3),
+      0 0 80px rgba(255, 165, 0, 0.3);
+  }
+  75% {
+    transform: skewX(-10deg);
+    box-shadow:
+      0 0 10px rgba(255, 165, 0, 0.4),
+      0 0 20px rgba(255, 165, 0, 0.4),
+      0 0 60px rgba(255, 165, 0, 0.4),
+      0 0 80px rgba(255, 165, 0, 0.4);
+  }
+  100% {
+    transform: skewX(5deg);
+    box-shadow:
+      0 0 10px rgba(255, 165, 0, 0.5),
+      0 0 20px rgba(255, 165, 0, 0.5),
+      0 0 60px rgba(255, 165, 0, 0.5),
+      0 0 80px rgba(255, 165, 0, 0.5);
+  }
+}
+
+/* =======================
+   CANDLES
+======================= */
+
+.cake-candle {
+  position: absolute;
+  width: min(20vw, 80px);
+  height: min(20vw, 80px);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  animation: candle-pop 240ms ease-out;
+  z-index: 5;
+  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.45));
+}
+
+.cake-candle::before {
+  content: none;
+}
+
+.cake-candle::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--cake-img);
+  background-size: 108%;
+  background-repeat: no-repeat;
+  background-position: 50% 30%;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  overflow: hidden;
+  -webkit-clip-path: polygon(
+    50% 96%,
+    15% 67%,
+    7% 56%,
+    7% 38%,
+    18% 22%,
+    34% 18%,
+    50% 30%,
+    66% 18%,
+    82% 22%,
+    93% 38%,
+    93% 56%,
+    85% 67%
+  );
+  clip-path: polygon(
+    50% 96%,
+    15% 67%,
+    7% 56%,
+    7% 38%,
+    18% 22%,
+    34% 18%,
+    50% 30%,
+    66% 18%,
+    82% 22%,
+    93% 38%,
+    93% 56%,
+    85% 67%
+  );
+}
+
+/* =======================
+   GALLERY
+======================= */
+
+.cake-gallery-title {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.04;
+  letter-spacing: 0.01em;
+  font-weight: 900;
+  color: #f5f7ff;
+  text-shadow: 0 6px 24px rgba(0, 0, 0, 0.34);
+}
+
+.cake-panel {
+  min-width: 0;
+}
+
+.cake-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(184px, 1fr));
+  gap: 14px;
+}
+
+.cake-gallery-card {
+  appearance: none;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background:
+    linear-gradient(180deg, rgba(12, 11, 30, 0.35) 0%, rgba(12, 11, 30, 0.86) 100%),
+    rgba(255, 255, 255, 0.06);
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  transition:
+    transform 0.16s ease-out,
+    border-color 0.16s ease-out,
+    box-shadow 0.16s ease-out;
+}
+
+.cake-gallery-card:active {
+  transform: translateY(1px) scale(0.995);
+}
+
+.cake-gallery-card:focus {
+  outline: 2px solid rgba(142, 202, 254, 0.78);
+  outline-offset: 3px;
+}
+
+.cake-gallery-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(255, 155, 215, 0.62);
+  box-shadow:
+    0 18px 34px rgba(0, 0, 0, 0.52),
+    0 0 0 1px rgba(142, 202, 254, 0.4);
+}
+
+.cake-gallery-card-img {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  background: #111;
+}
+
+.cake-gallery-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.cake-gallery-card-body {
+  padding: 11px 12px 12px;
+  font-size: 13px;
+}
+
+.cake-gallery-card-title {
+  font-weight: 900;
+  font-size: 1.06rem;
+  line-height: 1.1;
+  color: #fff8f2;
+}
+
+.cake-gallery-card-meta {
+  opacity: 0.82;
+  font-size: 0.86rem;
+  margin-top: 4px;
+  color: rgba(245, 241, 255, 0.84);
+}
+
+/* =======================
+   ANIMATIONS
+======================= */
+
+@keyframes cake-breathe {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+@keyframes candle-pop {
+  0% {
+    transform: translate(-50%, -50%) scale(0.6);
+    opacity: 0;
+  }
+  80% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* =======================
+   MOBILE
+======================= */
+
+@media (max-width: 768px) {
+  .cake-page {
+    padding: 14px 12px 20px;
+  }
+
+  .cake-layout-main {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .cake-topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .cake-board {
+    min-height: 340px;
+    order: 1;
+  }
+
+  .cake-panel {
+    order: 2;
+  }
+
+  .cake-gallery-title {
+    font-size: 1.55rem;
+  }
+
+  .cake-gallery-grid {
+    grid-template-columns: repeat(auto-fill, minmax(152px, 1fr));
+    gap: 10px;
+  }
+}
+
+/* =======================
+   OPENING INTRO
+======================= */
+
+.intro-overlay {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 32%, rgba(255, 155, 215, 0.3), transparent 40%),
+    radial-gradient(circle at 42% 16%, rgba(142, 202, 254, 0.2), transparent 42%),
+    radial-gradient(circle at center, rgba(34, 22, 100, 0.95), rgba(5, 8, 28, 0.98) 70%);
+  animation: intro-fade 2.5s ease forwards;
+}
+
+.intro-stage {
+  position: relative;
+  width: 230px;
+  height: 260px;
+  display: grid;
+  justify-items: center;
+  align-content: end;
+  transform: translateY(8px);
+  animation: intro-rise 700ms 120ms ease-out both;
+}
+
+#cake-intro {
+  display: block;
+  filter: drop-shadow(0 16px 36px rgba(0, 0, 0, 0.42));
+}
+
+.velas {
+  background: #fff;
+  border-radius: 10px;
+  position: absolute;
+  top: 28px;
+  left: 50%;
+  margin-left: -3px;
+  width: 6px;
+  height: 38px;
+  transform: translateY(-26px);
+  animation: candle-in 420ms 420ms ease-out both;
+}
+
+.velas::after,
+.velas::before {
+  background: rgba(255, 155, 215, 0.42);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+}
+
+.velas::after {
+  top: 28%;
+  left: 0;
+}
+
+.velas::before {
+  top: 52%;
+  left: 0;
+}
+
+.fuego {
+  border-radius: 999px;
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  margin-left: -3px;
+  width: 7px;
+  height: 16px;
+  background: rgba(255, 155, 215, 0.6);
+}
+
+.fuego:nth-child(1) {
+  animation: fuego 2s 700ms infinite;
+}
+
+.fuego:nth-child(2) {
+  animation: fuego 1.6s 700ms infinite;
+}
+
+.fuego:nth-child(3) {
+  animation: fuego 1.2s 700ms infinite;
+}
+
+.fuego:nth-child(4) {
+  animation: fuego 0.9s 700ms infinite;
+}
+
+.fuego:nth-child(5) {
+  animation: fuego 0.65s 700ms infinite;
+}
+
+.intro-text {
+  margin: 2px 0 0;
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  color: rgb(226, 241, 255);
+  text-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+  animation: intro-text 520ms 860ms ease-out both;
+}
+
+@keyframes fuego {
+  0%,
+  100% {
+    background: rgba(255, 155, 215, 0.7);
+    box-shadow:
+      0 0 20px 8px rgba(255, 155, 215, 0.22),
+      0 0 28px 10px rgba(142, 202, 254, 0.2);
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    background: rgba(142, 202, 254, 0.35);
+    box-shadow:
+      0 0 26px 12px rgba(142, 202, 254, 0.2),
+      0 0 30px 16px rgba(255, 155, 215, 0.18);
+    transform: translateY(-14px) scale(0.2);
+  }
+}
+
+@keyframes candle-in {
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes intro-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes intro-text {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes intro-fade {
+  0% {
+    opacity: 1;
+    visibility: visible;
+  }
+  82% {
+    opacity: 1;
+    visibility: visible;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
