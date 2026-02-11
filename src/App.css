@@ -32,6 +32,24 @@
   margin-bottom: 14px;
 }
 
+.cake-topbar-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.button-secondary {
+  background: linear-gradient(135deg, rgba(142, 202, 254, 0.35), rgba(255, 155, 215, 0.28));
+  border: 1px solid rgba(142, 202, 254, 0.55);
+  color: #f3f7ff;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+}
+
+.button-secondary:hover {
+  border-color: rgba(255, 155, 215, 0.72);
+}
+
 .cake-layout-main {
   display: grid;
   grid-template-columns: minmax(300px, 380px) minmax(0, 1fr);
@@ -491,6 +509,10 @@
   .cake-topbar {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .cake-topbar-actions {
+    justify-content: flex-start;
   }
 
   .cake-board {

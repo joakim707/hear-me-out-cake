@@ -30,6 +30,7 @@ export default function Room() {
   const [me, setMe] = useState<PlayerRow | null>(null);
 
   const cakeRef = useRef<HTMLDivElement | null>(null);
+  const askedNameRef = useRef(false);
 
   useEffect(() => {
     let unsubPlayers: (() => void) | null = null;
@@ -116,6 +117,51 @@ export default function Room() {
     };
   }, [roomCode, deviceId]);
 
+  useEffect(() => {
+    async function ensurePlayer() {
+      if (!room || askedNameRef.current) return;
+      if (me) return;
+
+      const { data: existing } = await supabase
+        .from("players")
+        .select("*")
+        .eq("room_id", room.id)
+        .eq("device_id", deviceId)
+        .maybeSingle<PlayerRow>();
+
+      if (existing) {
+        setMe(existing);
+        return;
+      }
+
+      askedNameRef.current = true;
+      const name = window.prompt("Ton pseudo ?");
+      if (!name?.trim()) return;
+
+      const { error } = await supabase.from("players").insert({
+        room_id: room.id,
+        device_id: deviceId,
+        name: name.trim(),
+        is_host: false,
+      });
+
+      if (error) console.error(error);
+    }
+
+    void ensurePlayer();
+  }, [room, deviceId, me]);
+
+  async function copyInviteLink() {
+    const url = `${window.location.origin}/room/${room?.code ?? ""}`;
+    try {
+      await navigator.clipboard.writeText(url);
+      alert("Lien copie");
+    } catch (error) {
+      console.error(error);
+      alert(url);
+    }
+  }
+
   function getAutoPosition(index: number, total: number) {
     const safeTotal = Math.max(total, 1);
     const angle = (index / safeTotal) * Math.PI * 2 - Math.PI / 2;
@@ -167,7 +213,12 @@ export default function Room() {
           </p>
         </div>
 
-        <button onClick={() => navigate(`/room/${room.code}/add`)}>+ Ajouter</button>
+        <div className="cake-topbar-actions">
+          <button className="button-secondary" onClick={copyInviteLink}>
+            Copier le lien
+          </button>
+          <button onClick={() => navigate(`/room/${room.code}/add`)}>+ Ajouter</button>
+        </div>
       </div>
 
       <div className="cake-layout-main">
