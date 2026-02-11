@@ -496,27 +496,45 @@
 
 @media (max-width: 768px) {
   .cake-page {
-    padding: 14px 12px 20px;
+    padding: 10px 8px 16px;
   }
 
   .cake-layout-main {
     grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 14px;
-    border-radius: 20px;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 16px;
   }
 
   .cake-topbar {
-    flex-direction: column;
-    align-items: stretch;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .cake-topbar h2 {
+    font-size: 1.2rem;
+    line-height: 1.15;
+  }
+
+  .cake-topbar .hint {
+    margin-top: 2px;
+    font-size: 0.82rem;
+    opacity: 0.82;
   }
 
   .cake-topbar-actions {
-    justify-content: flex-start;
+    justify-content: flex-end;
+    gap: 6px;
+  }
+
+  .cake-topbar-actions button {
+    padding: 0.46rem 0.82rem;
+    font-size: 0.82rem;
   }
 
   .cake-board {
-    min-height: 340px;
+    min-height: 235px;
     order: 1;
   }
 
@@ -524,13 +542,66 @@
     order: 2;
   }
 
+  .cake-drop {
+    width: min(56vw, 240px);
+    height: min(56vw, 240px);
+  }
+
+  .cake-candle {
+    width: min(15vw, 56px);
+    height: min(15vw, 56px);
+  }
+
+  .cake {
+    transform: scale(0.68);
+    transform-origin: center;
+  }
+
   .cake-gallery-title {
-    font-size: 1.55rem;
+    font-size: 1.15rem;
+    margin-bottom: 2px;
   }
 
   .cake-gallery-grid {
-    grid-template-columns: repeat(auto-fill, minmax(152px, 1fr));
-    gap: 10px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+  }
+
+  .cake-gallery-card {
+    border-radius: 12px;
+  }
+
+  .cake-gallery-card-img {
+    aspect-ratio: 3 / 4;
+  }
+
+  .cake-gallery-card-body {
+    padding: 7px 8px 8px;
+  }
+
+  .cake-gallery-card-title {
+    font-size: 0.92rem;
+  }
+
+  .cake-gallery-card-meta {
+    font-size: 0.74rem;
+    margin-top: 2px;
+  }
+}
+
+@media (max-width: 430px) {
+  .cake-drop {
+    width: min(58vw, 220px);
+    height: min(58vw, 220px);
+  }
+
+  .cake-candle {
+    width: min(14vw, 52px);
+    height: min(14vw, 52px);
+  }
+
+  .cake {
+    transform: scale(0.62);
   }
 }
 
